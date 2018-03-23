@@ -17,3 +17,13 @@ D:\GitHub\III Godina\VI Semestar\Cloud-Computing\ComputeService\Compute\obj\Debu
 D:\GitHub\III Godina\VI Semestar\Cloud-Computing\ComputeService\Compute\obj\Debug\Compute.csproj.CopyComplete
 D:\GitHub\III Godina\VI Semestar\Cloud-Computing\ComputeService\Compute\obj\Debug\Compute.exe
 D:\GitHub\III Godina\VI Semestar\Cloud-Computing\ComputeService\Compute\obj\Debug\Compute.pdb
+D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Projekti\ProjekatA\ComputeService\Compute\bin\Debug\Compute.exe.config
+D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Projekti\ProjekatA\ComputeService\Compute\bin\Debug\Compute.exe
+D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Projekti\ProjekatA\ComputeService\Compute\bin\Debug\Compute.pdb
+D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Projekti\ProjekatA\ComputeService\Compute\bin\Debug\ServiceContract.dll
+D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Projekti\ProjekatA\ComputeService\Compute\bin\Debug\ServiceContract.pdb
+D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Projekti\ProjekatA\ComputeService\Compute\obj\Debug\Compute.csprojResolveAssemblyReference.cache
+D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Projekti\ProjekatA\ComputeService\Compute\obj\Debug\Compute.csproj.CoreCompileInputs.cache
+D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Projekti\ProjekatA\ComputeService\Compute\obj\Debug\Compute.csproj.CopyComplete
+D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Projekti\ProjekatA\ComputeService\Compute\obj\Debug\Compute.exe
+D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Projekti\ProjekatA\ComputeService\Compute\obj\Debug\Compute.pdb

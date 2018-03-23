@@ -18,5 +18,11 @@ namespace StudentService_Data
             RowKey = indexNo;
         }
         public Student() { }
-    }
+
+        public override string ToString()
+        {
+            return $"Indeks {RowKey}\nName {Name}\nLast Name {LastName}\n";
+        }
+    }
+
 }
