@@ -1,5 +1,0 @@
-C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\ServiceContract\bin\Debug\ServiceContract.dll
-C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\ServiceContract\bin\Debug\ServiceContract.pdb
-C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\ServiceContract\obj\Debug\ServiceContract.csproj.CoreCompileInputs.cache
-C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\ServiceContract\obj\Debug\ServiceContract.dll
-C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\ServiceContract\obj\Debug\ServiceContract.pdb
