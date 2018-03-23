@@ -1,9 +1,0 @@
-C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Compute\bin\Debug\Compute.exe.config
-C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Compute\bin\Debug\Compute.exe
-C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Compute\bin\Debug\Compute.pdb
-C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Compute\bin\Debug\ServiceContract.dll
-C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Compute\bin\Debug\ServiceContract.pdb
-C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Compute\obj\Debug\Compute.csprojResolveAssemblyReference.cache
-C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Compute\obj\Debug\Compute.csproj.CoreCompileInputs.cache
-C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Compute\obj\Debug\Compute.exe
-C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Compute\obj\Debug\Compute.pdb
