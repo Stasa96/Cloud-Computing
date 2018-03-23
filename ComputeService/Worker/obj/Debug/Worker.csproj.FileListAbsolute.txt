@@ -1,0 +1,8 @@
+C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Worker\bin\Debug\Worker.dll
+C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Worker\bin\Debug\Worker.pdb
+C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Worker\bin\Debug\ServiceContract.dll
+C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Worker\bin\Debug\ServiceContract.pdb
+C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Worker\obj\Debug\Worker.csprojResolveAssemblyReference.cache
+C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Worker\obj\Debug\Worker.csproj.CoreCompileInputs.cache
+C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Worker\obj\Debug\Worker.dll
+C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Worker\obj\Debug\Worker.pdb

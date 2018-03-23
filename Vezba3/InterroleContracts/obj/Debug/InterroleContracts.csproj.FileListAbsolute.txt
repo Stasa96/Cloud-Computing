@@ -1,0 +1,11 @@
+D:\GitHub\Cloud Computing\Vezba2\InterroleContracts\bin\Debug\InterroleContracts.dll
+D:\GitHub\Cloud Computing\Vezba2\InterroleContracts\bin\Debug\InterroleContracts.pdb
+D:\GitHub\Cloud Computing\Vezba2\InterroleContracts\obj\Debug\InterroleContracts.csproj.CoreCompileInputs.cache
+D:\GitHub\Cloud Computing\Vezba2\InterroleContracts\obj\Debug\InterroleContracts.dll
+D:\GitHub\Cloud Computing\Vezba2\InterroleContracts\obj\Debug\InterroleContracts.pdb
+D:\GitHub\Cloud Computing\Vezba3\InterroleContracts\bin\Debug\InterroleContracts.dll
+D:\GitHub\Cloud Computing\Vezba3\InterroleContracts\bin\Debug\InterroleContracts.pdb
+D:\GitHub\Cloud Computing\Vezba3\InterroleContracts\obj\Debug\InterroleContracts.csprojResolveAssemblyReference.cache
+D:\GitHub\Cloud Computing\Vezba3\InterroleContracts\obj\Debug\InterroleContracts.csproj.CoreCompileInputs.cache
+D:\GitHub\Cloud Computing\Vezba3\InterroleContracts\obj\Debug\InterroleContracts.dll
+D:\GitHub\Cloud Computing\Vezba3\InterroleContracts\obj\Debug\InterroleContracts.pdb

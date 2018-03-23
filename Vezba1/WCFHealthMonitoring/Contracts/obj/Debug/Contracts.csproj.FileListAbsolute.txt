@@ -1,0 +1,6 @@
+c:\users\student\source\repos\WCFHealthMonitoring\Contracts\bin\Debug\Contracts.dll
+c:\users\student\source\repos\WCFHealthMonitoring\Contracts\bin\Debug\Contracts.pdb
+c:\users\student\source\repos\WCFHealthMonitoring\Contracts\obj\Debug\Contracts.csprojResolveAssemblyReference.cache
+c:\users\student\source\repos\WCFHealthMonitoring\Contracts\obj\Debug\Contracts.csproj.CoreCompileInputs.cache
+c:\users\student\source\repos\WCFHealthMonitoring\Contracts\obj\Debug\Contracts.dll
+c:\users\student\source\repos\WCFHealthMonitoring\Contracts\obj\Debug\Contracts.pdb

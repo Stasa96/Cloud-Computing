@@ -1,0 +1,9 @@
+C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Container\bin\Debug\Container.exe.config
+C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Container\bin\Debug\Container.exe
+C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Container\bin\Debug\Container.pdb
+C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Container\bin\Debug\ServiceContract.dll
+C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Container\bin\Debug\ServiceContract.pdb
+C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Container\obj\Debug\Container.csprojResolveAssemblyReference.cache
+C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Container\obj\Debug\Container.csproj.CoreCompileInputs.cache
+C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Container\obj\Debug\Container.exe
+C:\Users\student\Downloads\GitHub-master\GitHub-master\Cloud Computing\ComputeService\Container\obj\Debug\Container.pdb
