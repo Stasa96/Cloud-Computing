@@ -2,6 +2,7 @@
 using StudentService_Data;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,9 @@ namespace JobWorker
     {
         StudentDataRepository rep = new StudentDataRepository();
         
-        public void AddStudent(string indexNo, string name, string lastName)
+        public string AddStudent(string indexNo, string name, string lastName)
         {
-            List<Student>st =  rep.RetrieveAllStudents().ToList();
-
-            // OVDE PROVERITI LOGIKU
+            List<Student>students =  rep.RetrieveAllStudents().ToList();
 
             Student s =  new Student(indexNo);
             s.Name = name;
@@ -24,23 +23,28 @@ namespace JobWorker
 
             int flag = -1;
 
-            foreach(Student ss in st)
+            foreach(Student st in students)
             {
-                if (ss.RowKey.Equals(s.RowKey))
+                if (st.RowKey.ToUpper().Equals(indexNo.ToUpper()))
                 {
                     flag = 1;
                     break;
                 }
             }
 
-            if(flag == -1)
+            if (flag == -1)
+            {
                 rep.AddStudent(s);
-
-            flag = -1;
+                Trace.WriteLine($"added\n{s.ToString()}");
+                return $"added\n{s.ToString()}";
+            }
+            Trace.WriteLine($"alredy exist\n{s.ToString()}");
+            return $"alredy exist\n{s.ToString()}";
         }
 
         public List<Student> RetrieveAllStudents()
         {
+            Trace.WriteLine("Retrieved list of students");
             return rep.RetrieveAllStudents().ToList();
         }
 
@@ -53,13 +57,15 @@ namespace JobWorker
 
             foreach (Student st in students)
             {
-                if (st.RowKey.Equals(indexNo))
+                if (st.RowKey.ToUpper().Equals(indexNo.ToUpper()))
                 {
-                    rep.RemoveStudent(s);
-                    return "Success";
+                    rep.RemoveStudent(st);
+                    Trace.WriteLine($"Removed\n{st.ToString()}");
+                    return $"Removed\n{st.ToString()}";
                 }
             }
-            return "Fail";
+            Trace.WriteLine($"Doesn't exist\n{s.ToString()}");
+            return $"Doesn't exist\n{s.ToString()}";
         }
 
         public string UpdateStudent(string indexNo, string name, string lastName)
@@ -73,13 +79,15 @@ namespace JobWorker
 
             foreach (Student st in students)
             {
-                if (st.RowKey.Equals(indexNo))
+                if (st.RowKey.ToUpper().Equals(indexNo.ToUpper()))
                 {
                     rep.UpdateStudent(s);
-                    return "Success";
+                    Trace.WriteLine($"Updated\n{st.ToString()}\nto\n{s.ToString()}");
+                    return $"Updated\n{st.ToString()}\nto\n{s.ToString()}";
                 }
             }
-            return "Fail";
+            Trace.WriteLine($"Doesn't exist\n{s.ToString()}");
+            return $"Doesn't exist\n{s.ToString()}";
         }
     }
 }

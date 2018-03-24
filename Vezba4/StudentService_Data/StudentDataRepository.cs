@@ -30,7 +30,6 @@ namespace StudentService_Data
         }
         public void AddStudent(Student newStudent)
         {
-            // Samostalni rad: izmestiti tableName u konfiguraciju servisa.
             TableOperation insertOperation = TableOperation.Insert(newStudent);
             _table.Execute(insertOperation);
 
@@ -44,8 +43,9 @@ namespace StudentService_Data
 
         public void UpdateStudent(Student newStudent)
         {
-            TableOperation updateOperation = TableOperation.Replace(newStudent);// tu baca exeption
-            _table.Execute(updateOperation); 
+            newStudent.ETag = "*"; // ZASTO SAMO OVDE
+            TableOperation replaceOperation = TableOperation.Replace(newStudent);
+            _table.Execute(replaceOperation); 
         }
     }
 }
