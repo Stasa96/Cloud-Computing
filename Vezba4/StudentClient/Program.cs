@@ -63,7 +63,6 @@ namespace StudentClient
                         XmlToDatabase();
                         break;
                     case '0':
-                        Add();
                         break;
                     default:
                         break;
