@@ -22,7 +22,7 @@
     <Property name="Configuration" value="Debug" />
     <Property name="Platform" value="AnyCPU" />
     <Property name="RoleTargetFramework" value="v4.5.1" />
-    <Property name="OutputDir" value="D:\GitHub\Cloud Computing\Vezba3\InterroleCommunication\obj\Debug\JobWorker\" />
+    <Property name="OutputDir" value="D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Vezba3\InterroleCommunication\obj\Debug\JobWorker\" />
     <Property name="EntryPoint" value="JobWorker.dll" />
     <Property name="SourceDir" value="" />
     <Property name="SitePhysicalPath" value="" />

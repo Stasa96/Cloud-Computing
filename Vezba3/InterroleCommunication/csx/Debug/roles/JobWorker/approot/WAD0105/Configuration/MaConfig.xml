@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<MonitoringManagement xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" namespace="WAD" timestamp="2018-03-17T00:07:13.0249731Z">
+<MonitoringManagement xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" namespace="WAD" timestamp="2018-04-14T21:08:18.2107107Z">
   <Accounts>
     <Account moniker="WadAccount" name="devstoreaccount1" key="Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==" />
   </Accounts>
@@ -13,7 +13,7 @@
   </Management>
   <Events>
     <CounterSets dontUseNPartitionSpread="true">
-      <CounterSet storeType="Central" priority="Normal" retryTimeout="PT60M" duration="PT1M" diskQuotaInMB="1504" dontUsePerNDayTable="true" dontUseNPartitionSpread="true" eventName="PerformanceCountersTable" sampleRateInSeconds="180">
+      <CounterSet storeType="Central" priority="Normal" retryTimeout="PT60M" duration="PT1M" diskQuotaInMB="902" dontUsePerNDayTable="true" dontUseNPartitionSpread="true" eventName="PerformanceCountersTable" sampleRateInSeconds="180">
         <Counter>\Memory\Available MBytes</Counter>
         <Counter>\Web Service(_Total)\ISAPI Extension Requests/sec</Counter>
         <Counter>\Web Service(_Total)\Bytes Total/Sec</Counter>
@@ -48,11 +48,19 @@
       <EtwProvider duration="PT1M" dontUseNPartitionSpread="true" guid="9238252e-3e48-43ef-ac6c-d66f8210474e;15D2502E-8793-435d-B9FA-87E67A7BBA29" format="Xml" levelFilter="2">
         <DefaultEvent storeType="Central" priority="Normal" retryTimeout="PT60M" diskQuotaInMB="50" dontUsePerNDayTable="true" dontUseNPartitionSpread="true" eventName="DiagnosticInfrastructureLogsTable" />
       </EtwProvider>
-      <EtwProvider storeType="Central" priority="Normal" retryTimeout="PT60M" duration="PT1M" diskQuotaInMB="1504" dontUsePerNDayTable="true" dontUseNPartitionSpread="true" guid="8D5CB585-360B-4442-8252-6C28A3DCA52E" format="Xml" levelFilter="2">
+      <EtwProvider storeType="Central" priority="Normal" retryTimeout="PT60M" duration="PT1M" diskQuotaInMB="902" dontUsePerNDayTable="true" dontUseNPartitionSpread="true" guid="8D5CB585-360B-4442-8252-6C28A3DCA52E" format="Xml" levelFilter="2">
         <DefaultEvent eventName="LogsTable" />
       </EtwProvider>
     </EtwProviders>
-    <WindowsEventLogSubscriptions storeType="Central" priority="Normal" retryTimeout="PT60M" duration="PT1M" diskQuotaInMB="1504" dontUsePerNDayTable="true" dontUseNPartitionSpread="true">
+    <FileMonitors storeType="Central" priority="Normal" retryTimeout="PT60M" duration="PT1M" diskQuotaInMB="50" dontUsePerNDayTable="true" dontUseNPartitionSpread="true">
+      <FileWatchItem dontUseNPartitionSpread="true" compressionType="none" eventName="DirectoriesTable" directoryQuotaInMB="902" lastChangeOffsetInSeconds="300" removeEmptyDirectories="false" container="wad-iis-logfiles">
+        <Directory>"C:\inetpub\logs\LogFiles"</Directory>
+      </FileWatchItem>
+      <FileWatchItem dontUseNPartitionSpread="true" compressionType="none" eventName="DirectoriesTable" directoryQuotaInMB="902" lastChangeOffsetInSeconds="300" removeEmptyDirectories="false" container="wad-failedrequestlogs">
+        <Directory>"C:\inetpub\logs\FailedReqLogFiles"</Directory>
+      </FileWatchItem>
+    </FileMonitors>
+    <WindowsEventLogSubscriptions storeType="Central" priority="Normal" retryTimeout="PT60M" duration="PT1M" diskQuotaInMB="902" dontUsePerNDayTable="true" dontUseNPartitionSpread="true">
       <Subscription eventName="WindowsEventLogsTable" query="Application!*[System[(Level=1 or Level=2 or Level=3)]]">
         <Column name="ProviderGuid" type="mt:wstr" defaultAssignment="00000000-0000-0000-0000-000000000000">
           <Value>/Event/System/Provider/@Guid</Value>

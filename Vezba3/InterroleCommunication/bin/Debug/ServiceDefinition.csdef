@@ -19,10 +19,10 @@
     </Endpoints>
     <Contents>
       <Content destination=".\">
-        <SourceDirectory path="D:\GitHub\Cloud Computing\Vezba3\InterroleCommunication\rcf\Debug\JobWorkerContent\" />
+        <SourceDirectory path="D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Vezba3\InterroleCommunication\rcf\Debug\JobWorkerContent\" />
       </Content>
       <Content destination=".\">
-        <SourceDirectory path="D:\GitHub\Cloud Computing\Vezba3\InterroleCommunication\ecf\JobWorkerContent\" />
+        <SourceDirectory path="D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Vezba3\InterroleCommunication\ecf\JobWorkerContent\" />
       </Content>
     </Contents>
     <Imports>

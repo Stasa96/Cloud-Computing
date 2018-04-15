@@ -1,1 +1,15 @@
-DiagnosticsPluginLauncher.exe Information: 0 : [3/17/2018 12:07:12 AM] At least one other instance of the launcher is running. Will wait until they all finish
+DiagnosticsPluginLauncher.exe Information: 0 : [4/14/2018 9:08:17 PM] Emulator config file set to D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Vezba3\InterroleCommunication\csx\Debug\roles\JobWorker\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [4/14/2018 9:08:17 PM] DiagnosticsStoreRootPath set to: D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Vezba3\InterroleCommunication\csx\Debug\roles\JobWorker\approot
+DiagnosticsPluginLauncher.exe Information: 0 : [4/14/2018 9:08:17 PM] Loading config file: D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Vezba3\InterroleCommunication\csx\Debug\roles\JobWorker\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [4/14/2018 9:08:17 PM] Config file to read: D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Vezba3\InterroleCommunication\csx\Debug\roles\JobWorker\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [4/14/2018 9:08:17 PM] Checking VM Type
+DiagnosticsPluginLauncher.exe Information: 0 : [4/14/2018 9:08:17 PM] Emulator config file set to D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Vezba3\InterroleCommunication\csx\Debug\roles\JobWorker\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [4/14/2018 9:08:17 PM] Extension set to Emulator Mode
+DiagnosticsPluginLauncher.exe Information: 0 : [4/14/2018 9:08:17 PM] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [4/14/2018 9:08:17 PM] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [4/14/2018 9:08:17 PM] Stopping the running plugin, if any
+DiagnosticsPluginLauncher.exe Information: 0 : [4/14/2018 9:08:17 PM] No DiagnosticsPlugin is running.
+DiagnosticsPluginLauncher.exe Information: 0 : [4/14/2018 9:08:17 PM] Killing any DiagnosticsPlugin that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [4/14/2018 9:08:17 PM] Killing any MonAgentHost that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [4/14/2018 9:08:17 PM] Diagnostics plugin stopped successfully
+DiagnosticsPluginLauncher.exe Information: 0 : [4/14/2018 9:08:17 PM] Resetting DiagnosticPlugin

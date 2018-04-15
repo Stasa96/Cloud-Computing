@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="InterroleCommunication" generation="1" functional="0" release="0" Id="85b5d23b-6a62-46fd-bd68-4fa045279497" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="InterroleCommunication" generation="1" functional="0" release="0" Id="79045b96-c429-4469-8d03-47bd607a227b" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="InterroleCommunicationGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -47,7 +47,7 @@
       </maps>
       <components>
         <groupHascomponents>
-          <role name="JobWorker" generation="1" functional="0" release="0" software="D:\GitHub\Cloud Computing\Vezba3\InterroleCommunication\csx\Debug\roles\JobWorker" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaWorkerHost.exe " memIndex="-1" hostingEnvironment="consoleroleadmin" hostingEnvironmentVersion="2">
+          <role name="JobWorker" generation="1" functional="0" release="0" software="D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Vezba3\InterroleCommunication\csx\Debug\roles\JobWorker" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaWorkerHost.exe " memIndex="-1" hostingEnvironment="consoleroleadmin" hostingEnvironmentVersion="2">
             <componentports>
               <inPort name="InputRequest" protocol="tcp" portRanges="6000" />
               <inPort name="InternalRequest" protocol="tcp" />
@@ -81,9 +81,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="bfd11873-491c-488f-a913-1cfd1a41173b" ref="Microsoft.RedDog.Contract\ServiceContract\InterroleCommunicationContract@ServiceDefinition">
+    <implementation Id="631af47a-0d81-40cc-919e-c43eb90995a5" ref="Microsoft.RedDog.Contract\ServiceContract\InterroleCommunicationContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="d9a0bbf5-cdc5-42d7-ae07-bb04ff22af80" ref="Microsoft.RedDog.Contract\Interface\JobWorker:InputRequest@ServiceDefinition">
+        <interfaceReference Id="1b84ec26-4a99-4377-8e4a-01bfb3c7c4fc" ref="Microsoft.RedDog.Contract\Interface\JobWorker:InputRequest@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/InterroleCommunication/InterroleCommunicationGroup/JobWorker:InputRequest" />
           </inPort>

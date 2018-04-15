@@ -9,3 +9,9 @@ D:\GitHub\Cloud Computing\Vezba3\InterroleContracts\obj\Debug\InterroleContracts
 D:\GitHub\Cloud Computing\Vezba3\InterroleContracts\obj\Debug\InterroleContracts.csproj.CoreCompileInputs.cache
 D:\GitHub\Cloud Computing\Vezba3\InterroleContracts\obj\Debug\InterroleContracts.dll
 D:\GitHub\Cloud Computing\Vezba3\InterroleContracts\obj\Debug\InterroleContracts.pdb
+D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Vezba3\InterroleContracts\bin\Debug\InterroleContracts.dll
+D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Vezba3\InterroleContracts\bin\Debug\InterroleContracts.pdb
+D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Vezba3\InterroleContracts\obj\Debug\InterroleContracts.csprojResolveAssemblyReference.cache
+D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Vezba3\InterroleContracts\obj\Debug\InterroleContracts.csproj.CoreCompileInputs.cache
+D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Vezba3\InterroleContracts\obj\Debug\InterroleContracts.dll
+D:\GitHub\III Godina\VI Semestar\Cloud-Computing\Vezba3\InterroleContracts\obj\Debug\InterroleContracts.pdb
