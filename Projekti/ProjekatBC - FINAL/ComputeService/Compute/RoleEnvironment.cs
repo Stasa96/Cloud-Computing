@@ -43,7 +43,7 @@ namespace Compute
             return retVal.ToArray();
         }
 
-        public string GetAddress( string containerId)
+        public string GetAddress(String myAssemblyName, string containerId)
         {
             return $"100{containerId}0";
         }

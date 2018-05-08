@@ -18,7 +18,7 @@ namespace Container
             Program.assemblyName = assemblyName;
             string[] pom = assemblyName.Split('\\', '_');
             string port = Program.port;
-
+            Console.WriteLine("Port of this container is "+   Program.proxy.GetAddress(assemblyName,Program.ContainerId));
             Assembly DLL = Assembly.Load(File.ReadAllBytes(assemblyName));
             dynamic c = null;
 

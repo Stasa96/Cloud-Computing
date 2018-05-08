@@ -16,8 +16,8 @@ namespace Container
         static ServiceHost svc;
         public static int flag = -1;
         public static string port;
-        static string ContainerId;
-        static IRoleEnvironment proxy;
+        public static string ContainerId;
+        public static IRoleEnvironment proxy;
         public static  string assemblyName;
         #endregion parameters
 
@@ -30,7 +30,7 @@ namespace Container
             proxy = factory.CreateChannel();
      
 
-            OpenServiceHost(port = proxy.GetAddress(ContainerId));
+            OpenServiceHost(port = proxy.GetAddress("",ContainerId));
             BrotherInstance();
 
             Console.ReadKey();
@@ -63,9 +63,10 @@ namespace Container
                 // Thread.CurrentThread.IsBackground = true;
                 while (true)
                 {
+                    
                     foreach(string s in proxy.BrotherInstances(assemblyName, port))
                     {
-                        Console.WriteLine(s);
+                        Console.WriteLine("\t"+s);
                     }
                     Thread.Sleep(5000);
                 }

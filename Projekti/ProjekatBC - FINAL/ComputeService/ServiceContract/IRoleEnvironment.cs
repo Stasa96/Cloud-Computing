@@ -12,7 +12,7 @@ namespace ServiceContract
     {
         [OperationContract]
         //String GetAddress(String myAssemblyName, String containerId);
-        String GetAddress( String containerId);
+        String GetAddress(String myAssemblyName, String containerId);
 
         [OperationContract]
         String[] BrotherInstances(String myAssemblyName, String myAddress);
