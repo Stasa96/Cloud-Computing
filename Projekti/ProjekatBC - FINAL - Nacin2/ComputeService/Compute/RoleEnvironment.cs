@@ -9,7 +9,7 @@ namespace Compute
 {
     public class RoleEnvironment : IRoleEnvironment
     {
-        // TO DO(Proveriti GetAddress metodu zasto assemblyName)
+        
         #region parameters
         public struct Packet
         {

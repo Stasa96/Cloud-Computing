@@ -20,7 +20,7 @@ namespace Compute
         static ServiceHost sh;
 
         public static IContainer[] proxy = new IContainer[4];
-        
+        public static int lastportfail = -1;
         public static int instance;
         public static int containersCnt = 4;
         public static container[] niz = new container[4];
@@ -32,7 +32,7 @@ namespace Compute
         public static List<string> DLLs = new List<string>();
         static int i = 0;
         #endregion
-        public static int lastportfail = -1;
+      
 
         #region Main
         static void Main(string[] args)
@@ -241,7 +241,7 @@ namespace Compute
                     containersCnt--;
 
                     Console.WriteLine($"sent to Container {i} with port 100{i}0");
-                    Console.WriteLine("Number of available containers is: " + containersCnt);
+                    //Console.WriteLine("Number of available containers is: " + containersCnt);
                 }
             }
 
@@ -325,6 +325,7 @@ namespace Compute
                                 container c = containers[j + 1];
                                 c.state = false;
                                 containers[j + 1] = c;
+                                
                                
                             }
                         }
@@ -365,6 +366,11 @@ namespace Compute
                                 packet.dll = containers[j + 1].packet.dll;
                                 instance = 1;
                                 LoadDLL();
+                            }
+                            else
+                            {
+                                StartContainer((j + 1).ToString());
+                                Connect(j);
                             }
                         }
                         Thread.Sleep(500);
