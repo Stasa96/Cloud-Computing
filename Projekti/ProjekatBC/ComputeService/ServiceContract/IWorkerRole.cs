@@ -11,8 +11,9 @@ namespace ServiceContract
     public interface IWorkerRole
     {
         [OperationContract]
-        void Start(String containerId);
+        void Start(String containerId,string port);
         [OperationContract]
         void Stop();
-    }
+    }
+
 }

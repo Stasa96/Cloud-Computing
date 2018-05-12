@@ -10,22 +10,21 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
+using static Compute.RoleEnvironment;
 
 namespace Compute
 {
     class Program
     {
         #region parameters
-        public struct Packet{
-            public string xml;
-            public string dll;
-        };
+        static ServiceHost sh;
 
         public static IContainer[] proxy = new IContainer[4];
-        public static Dictionary<int, bool> portovi = new Dictionary<int, bool>() { { 1, false }, { 2, false }, { 3, false }, { 4, false } };
-        static Dictionary<string, int> pom = new Dictionary<string, int>() { { "1", -1 }, { "2", -1 }, { "3", -1 }, { "4", -1 } };
+        public static int lastportfail = -1;
+        public static int instance;
         public static int containersCnt = 4;
-
+        public static container[] niz = new container[4];
+        public static Packet packet;
         public static Process[] processes = new Process[4];
         public static string path = @"..\..\..\MainFolder\FolderForChecking";
 
@@ -33,39 +32,48 @@ namespace Compute
         public static List<string> DLLs = new List<string>();
         static int i = 0;
         #endregion
+      
+
+        #region Main
         static void Main(string[] args)
         {
+            OpenServicehost();
             StartContainers();
-            
+
             ConnectAll();
-            
+
             CheckState();
             meni();
 
             Console.WriteLine("Compute is closed...");
+            sh.Close();
             Console.ReadKey();
         }
+        #endregion Main
 
-        public static void StartContainers()
+        #region ProjekatA
+
+
+        private static void StartContainers()
         {
             for (int i = 1; i <= 4; i++)
             {
                 StartContainer(i.ToString());
                 Console.WriteLine($"Container {i} is opened.");
             }
-            ;
+            
         }
 
-        public static void StartContainer(string containerId)
+        private static void StartContainer(string containerId)
         {
             processes[int.Parse(containerId) - 1] = new Process();
-            processes[int.Parse(containerId) - 1].StartInfo.Arguments = $"100{containerId}0";
+            processes[int.Parse(containerId) - 1].StartInfo.Arguments = containerId;
             processes[int.Parse(containerId) - 1].StartInfo.FileName = @"..\..\..\Container\bin\Debug\Container.exe";
             processes[int.Parse(containerId) - 1].EnableRaisingEvents = true;
             processes[int.Parse(containerId) - 1].Start();
         }
 
-        public static void Connect(int i)
+        private static void Connect(int i)
         {
             try
             {
@@ -78,7 +86,7 @@ namespace Compute
             }
             Console.WriteLine("---------------------------------------------");
         }
-        public static void ConnectAll()
+        private static void ConnectAll()
         {
             try
             {
@@ -104,7 +112,7 @@ namespace Compute
             Console.WriteLine("---------------------------------------------");
         }
 
-        public static void meni()
+        private static void meni()
         {
             string answer = "";
             while (answer != "x")
@@ -130,9 +138,9 @@ namespace Compute
             }
         }
 
-        public static void checkPacket()
+        private static void checkPacket()
         {
-            Packet packet;
+            
 
             Console.Clear();
             Console.WriteLine("Folder is:");
@@ -168,17 +176,17 @@ namespace Compute
             XMLs.Clear();
         }
 
-        public static void CheckContainerCapacity(Packet packet)
+        private static void CheckContainerCapacity(Packet packet)
         {
-            int instace = readXML(packet.xml);
+            instance = readXML(packet.xml);
 
             if (containersCnt == 0)
             {
                 Console.WriteLine("There is no containers available.");
             }
-            else if (containersCnt >= instace)
+            else if (containersCnt >= instance)
             {
-                checkDllImplementation(instace, packet);
+                checkDllImplementation();
             }
             else
             {
@@ -188,8 +196,8 @@ namespace Compute
             File.Delete(packet.dll);
             File.Delete(packet.xml);
         }
-        
-        public static void  checkDllImplementation(int instance,Packet packet)
+
+        private static void  checkDllImplementation()
         {            
             Assembly dll = Assembly.Load(File.ReadAllBytes(packet.dll));
             int flag = -1;
@@ -202,34 +210,8 @@ namespace Compute
                 {
                     Console.WriteLine($"class: {type}\nDLL: {packet.dll.Split('\\','.')[packet.dll.Split('\\','.').Length-2]}\nimplements interface: IWorkerRole");
                     flag = 1;
-                    foreach (KeyValuePair<int, bool> port in portovi)
-                    {
-                        if (port.Value == false && instance != 0)
-                        {
-                            packet.dll = CopyDLL(packet.dll,port.Key);
 
-                            Task.Factory.StartNew(() => { pom[proxy[port.Key - 1].Load(packet.dll)] = 0; });
-                            pom[(++i).ToString()] = port.Key;
-                            
-                            instance--;
-                            containersCnt--;
-
-                            Console.WriteLine($"sent to Container {i} with port 100{i}0");
-                            Console.WriteLine("Number of available containers is: " +containersCnt);
-                        }
-                    }
-                    for (int j = 1; j <= 4; j++)
-                    {
-                        if (pom[j.ToString()] != -1)
-                        {
-                            portovi[pom[j.ToString()]] = true;
-
-                            if(pom[j.ToString()] == 0)
-                            {
-                                portovi[pom[j.ToString()]] = false;
-                            }
-                        }
-                    }
+                    LoadDLL();
                 }
             }
 
@@ -241,27 +223,60 @@ namespace Compute
             Console.WriteLine("---------------------------------------------");
         }
 
+        private static void LoadDLL()
+        {
+            foreach (KeyValuePair<int, container> cont in containers)
+            {
+                if (cont.Value.state == false && instance != 0)
+                {
+                    packet.dll = CopyDLL(packet.dll, cont.Key);
+
+                    Task.Factory.StartNew(() => { proxy[cont.Key - 1].Load(packet.dll); });
+                    niz[cont.Key - 1].state = true;
+                    niz[cont.Key - 1].packet = packet;
+                    //niz[cont.Key - 1].ClientPort = cont.Value.ClientPort;
+
+                    instance--;
+                    i = cont.Key;
+                    containersCnt--;
+
+                    Console.WriteLine($"sent to Container {i} with port 100{i}0");
+                    //Console.WriteLine("Number of available containers is: " + containersCnt);
+                }
+            }
+
+            for (int j = 0; j < 4; j++)
+            {
+                containers[j + 1] = niz[j];
+            }
+            
+        }
+
         private static string CopyDLL(string dll,int i)
         {
             string dest = $@"..\..\..\MainFolder\Port_100{i.ToString()}0";
-
-            string sourceFile = dll;
-            string[] part = dll.Split('\\');
-            string destFile = System.IO.Path.Combine(dest, part[part.Length - 1]);
-
-            if (System.IO.Directory.Exists(dest))
+            string destFile = dll;
+            try
             {
-                System.IO.File.Copy(sourceFile, destFile, true);
+                string sourceFile = $@"..\..\..\MainFolder\"+ dll.Split('\\')[dll.Split('\\').Length-1];
+                string[] part = dll.Split('\\');
+                destFile = System.IO.Path.Combine(dest, part[part.Length - 1]);
+
+
+                if (System.IO.Directory.Exists(dest))
+                {
+                    System.IO.File.Copy(sourceFile, destFile, true);
+                }
+                else
+                {
+                    Console.WriteLine("source or destination path doesn't exists.");
+                }
             }
-            else
-            {
-                Console.WriteLine("source or destination path doesn't exists.");
-            }
-            
+            catch (Exception) { }
             return destFile;
         }
 
-        public static int readXML(string path)
+        private static int readXML(string path)
         {
             int instances = -1;
 
@@ -284,34 +299,99 @@ namespace Compute
             }
             return instances;
         }
+        #endregion ProjekatA
 
-        public static void CheckState()
+        #region ProjekatBC
+        private static void CheckState()
         {
             new Thread(() =>
             {
-                //Thread.CurrentThread.IsBackground = true;
+               // Thread.CurrentThread.IsBackground = true;
                 while (true)
                 {
                     for(int j = 0;j<4;j++)
                     {
+                        containersCnt = 0;
+                        for (int k = 0; k < 4; k++)
+                        {
+                            if (containers[k + 1].state == false)
+                                containersCnt++;
+                        }
                         try
                         {
-                            proxy[j].CheckState().Equals("Alive");
-                            
+                            if (proxy[j].CheckState().Equals("free"))
+                            {
+                               
+                                container c = containers[j + 1];
+                                c.state = false;
+                                containers[j + 1] = c;
+                                
+                               
+                            }
                         }
                         catch (Exception)
                         {
-                            portovi[j+1] = false;
-                            containersCnt++;
-                            pom[(i + 1).ToString()] = 0;
-                            StartContainer((j+1).ToString());
-                            Connect(j);
-                            i--;
+                            if(containersCnt > 0 && !string.IsNullOrEmpty(containers[j + 1].packet.dll))
+                            {
+                                
+                                Console.WriteLine($"Shutdown 100{j+1}0 new container is taking over");
+                                packet.dll = containers[j + 1].packet.dll;
+                                instance = 1;
+                                container c = containers[j + 1];
+                                lastportfail = int.Parse(c.ClientPort);
+                                LoadDLL();
+                                File.Delete(containers[j + 1].packet.dll);
+                                
+                                c = new container();
+                                c.state = false;
+                                RoleEnvironment.containers[j + 1] = c;
+                                
+                                StartContainer((j + 1).ToString());
+                                Connect(j);
+                                i--;
+                            }
+                            else if(!string.IsNullOrEmpty(containers[j + 1].packet.dll))
+                            {
+                                
+                                Console.WriteLine($"Shutdown 100{j + 1}0 same container is taking over");
+                                container c = containers[j + 1];
+                                c.state = false;
+                                containers[j + 1] = c;
+                                
+
+                                StartContainer((j + 1).ToString());
+                                Connect(j);
+                                
+
+                                packet.dll = containers[j + 1].packet.dll;
+                                instance = 1;
+                                LoadDLL();
+                            }
+                            else
+                            {
+                                StartContainer((j + 1).ToString());
+                                Connect(j);
+                            }
                         }
+                        Thread.Sleep(500);
                     }
-                    Thread.Sleep(1000);
                 }
             }).Start();
         }
+        private static void OpenServicehost()
+        {
+            try
+            {
+                sh = new ServiceHost(typeof(RoleEnvironment));
+                sh.AddServiceEndpoint(typeof(IRoleEnvironment), new NetTcpBinding(), "net.tcp://localhost:11001/IRoleEnvironment");
+                sh.Open();
+                Console.WriteLine("Servicehost RoleEnvironment is opened on port 11001");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Servicehost RoleEnvironment error on port 11001");
+            }
+        }
+        #endregion ProjekatBC
     }
 }

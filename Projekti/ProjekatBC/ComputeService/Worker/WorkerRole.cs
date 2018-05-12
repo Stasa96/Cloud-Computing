@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,10 +12,14 @@ namespace Worker
     public class WorkerRole : IWorkerRole
     {
         int ID;
-        public void Start(string containerId)
+        string port;
+        ServiceHost sh;
+        public void Start(string containerId,string port)
         {
+            this.port = port;
             ID = int.Parse(containerId);
-            calculate();
+             Begin();
+            //OpenServiceHost();
             Stop();
         }
 
@@ -23,14 +28,23 @@ namespace Worker
             Console.WriteLine("_______________________________________________\nWorkerRole Dll is Stoped.");
         }
 
+        private void OpenServiceHost()
+        {
+            sh = new ServiceHost(typeof(Klasa));
+            sh.AddServiceEndpoint(typeof(IInterface), new NetTcpBinding(), $"net.tcp://localhost:{port}/IInterface");
+            sh.Open();
+            Console.WriteLine($"Service host open on container {ID} port of IInteface servicehost is {port}");
+            Console.ReadKey();
+            sh.Close();
+        }
+
         private void Begin()
         {
-            int i = 20;
-            while (i-- > 0)
+            while (true)
             {
-                //Console.WriteLine($"Working on container with port {ID}...");
-                calculate();
-                //Thread.Sleep(1000);
+                Console.WriteLine($"Working on container with port {ID}, my port for service host is {port}...");
+            
+                Thread.Sleep(1000);
             }
         }
 

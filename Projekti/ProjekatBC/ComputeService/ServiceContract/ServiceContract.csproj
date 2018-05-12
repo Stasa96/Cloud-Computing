@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IContainer.cs" />
+    <Compile Include="IInterface.cs" />
+    <Compile Include="IRoleEnvironment.cs" />
     <Compile Include="IWorkerRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
