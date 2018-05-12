@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>2.9</ProductVersion>
-    <ProjectGuid>3ccdf041-b414-4a53-9308-2f29bdead472</ProjectGuid>
+    <ProjectGuid>ef01365f-37bd-4f37-b836-271fb603d521</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>StudentService</RootNamespace>
@@ -39,7 +39,7 @@
   <ItemGroup>
     <ProjectReference Include="..\JobWorker\JobWorker.csproj">
       <Name>JobWorker</Name>
-      <Project>{dd122e29-9e3a-4574-ad36-f665153e44c9}</Project>
+      <Project>{0e88369e-4d7b-42a3-9f18-45bad632749b}</Project>
       <Private>True</Private>
       <RoleType>Worker</RoleType>
       <RoleName>JobWorker</RoleName>

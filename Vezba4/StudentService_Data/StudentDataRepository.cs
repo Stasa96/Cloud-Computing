@@ -2,8 +2,10 @@
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using System;
+using System.Collections.Generic;
 using System.Linq;
-
+using System.Text;
+using System.Threading.Tasks;
 
 namespace StudentService_Data
 {
@@ -11,16 +13,22 @@ namespace StudentService_Data
     {
         private CloudStorageAccount _storageAccount;
         private CloudTable _table;
-        
-
         public StudentDataRepository()
         {
-            _storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
+            _storageAccount =
+           CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
             CloudTableClient tableClient = new CloudTableClient(new
            Uri(_storageAccount.TableEndpoint.AbsoluteUri), _storageAccount.Credentials);
             _table = tableClient.GetTableReference("StudentTable");
             _table.CreateIfNotExists();
         }
+
+        public void RemoveStudent(Student s)
+        {
+            TableOperation removeOperation = TableOperation.Delete(s);
+            _table.Execute(removeOperation);
+        }
+
         public IQueryable<Student> RetrieveAllStudents()
         {
             var results = from g in _table.CreateQuery<Student>()
@@ -30,22 +38,16 @@ namespace StudentService_Data
         }
         public void AddStudent(Student newStudent)
         {
-            TableOperation insertOperation = TableOperation.Insert(newStudent);
-            _table.Execute(insertOperation);
+            try
+            {
+                // Samostalni rad: izmestiti tableName u konfiguraciju servisa.
+                TableOperation insertOperation = TableOperation.Insert(newStudent);
+                _table.Execute(insertOperation);
+            }
+            catch (Exception)
+            {
 
-        }
-
-        public void RemoveStudent(Student newStudent)
-        {
-            TableOperation deleteOperation = TableOperation.Delete(newStudent);
-            _table.Execute(deleteOperation);
-        }
-
-        public void UpdateStudent(Student newStudent)
-        {
-            newStudent.ETag = "*"; // ZASTO SAMO OVDE
-            TableOperation replaceOperation = TableOperation.Replace(newStudent);
-            _table.Execute(replaceOperation); 
+            }
         }
     }
 }

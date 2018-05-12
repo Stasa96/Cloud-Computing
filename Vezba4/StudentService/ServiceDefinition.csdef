@@ -6,7 +6,7 @@
       <Setting name="DataConnectionString" />
     </ConfigurationSettings>
     <Endpoints>
-      <InputEndpoint name="InputRequest" protocol="tcp" port="8000" />
+      <InputEndpoint name="InputRequest" protocol="tcp" port="11000" />
     </Endpoints>
   </WorkerRole>
 </ServiceDefinition>

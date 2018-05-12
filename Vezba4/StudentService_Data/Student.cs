@@ -11,18 +11,15 @@ namespace StudentService_Data
     {
         public String Name { get; set; }
 
+        public string Index { get; set; }
+
         public String LastName { get; set; }
-        public Student(String indexNo)
+        public Student(String index)
         {
             PartitionKey = "Student";
-            RowKey = indexNo;
+            RowKey = index;
+            Index = index;
         }
         public Student() { }
-
-        public override string ToString()
-        {
-            return $"Indeks {RowKey}\nName {Name}\nLast Name {LastName}\n";
-        }
-    }
-
+    }
 }

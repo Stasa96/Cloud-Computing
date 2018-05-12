@@ -3,15 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "StudentService", "StudentService\StudentService.ccproj", "{3CCDF041-B414-4A53-9308-2F29BDEAD472}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{F8E1D187-5253-40FB-8888-88C38FD8EFA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobWorker", "JobWorker\JobWorker.csproj", "{DD122E29-9E3A-4574-AD36-F665153E44C9}"
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "StudentService", "StudentService\StudentService.ccproj", "{EF01365F-37BD-4F37-B836-271FB603D521}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{F4B9EE3F-7001-479E-9140-FA73B4B80E3B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobWorker", "JobWorker\JobWorker.csproj", "{0E88369E-4D7B-42A3-9F18-45BAD632749B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentService_Data", "StudentService_Data\StudentService_Data.csproj", "{C20466BD-A2DB-412A-8668-53353A1F7FAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{C54AAC04-3418-44D6-8C04-F796B832FA3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentClient", "StudentClient\StudentClient.csproj", "{1106BEF5-3313-45F7-9D1D-5BD7B3079366}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{3B371E5A-A24F-4207-AEF9-236EB86DD9DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Baza", "Baza", "{FCB8D459-7C62-4D62-BE82-347D6932837F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentService_Data", "StudentService_Data\StudentService_Data.csproj", "{E16BF4A2-2906-4C35-A1E7-BEFA23ED6DFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,32 +23,37 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3CCDF041-B414-4A53-9308-2F29BDEAD472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3CCDF041-B414-4A53-9308-2F29BDEAD472}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3CCDF041-B414-4A53-9308-2F29BDEAD472}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3CCDF041-B414-4A53-9308-2F29BDEAD472}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DD122E29-9E3A-4574-AD36-F665153E44C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DD122E29-9E3A-4574-AD36-F665153E44C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DD122E29-9E3A-4574-AD36-F665153E44C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DD122E29-9E3A-4574-AD36-F665153E44C9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F4B9EE3F-7001-479E-9140-FA73B4B80E3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F4B9EE3F-7001-479E-9140-FA73B4B80E3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F4B9EE3F-7001-479E-9140-FA73B4B80E3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F4B9EE3F-7001-479E-9140-FA73B4B80E3B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C20466BD-A2DB-412A-8668-53353A1F7FAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C20466BD-A2DB-412A-8668-53353A1F7FAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C20466BD-A2DB-412A-8668-53353A1F7FAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C20466BD-A2DB-412A-8668-53353A1F7FAC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1106BEF5-3313-45F7-9D1D-5BD7B3079366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1106BEF5-3313-45F7-9D1D-5BD7B3079366}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1106BEF5-3313-45F7-9D1D-5BD7B3079366}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1106BEF5-3313-45F7-9D1D-5BD7B3079366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF01365F-37BD-4F37-B836-271FB603D521}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF01365F-37BD-4F37-B836-271FB603D521}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF01365F-37BD-4F37-B836-271FB603D521}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF01365F-37BD-4F37-B836-271FB603D521}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E88369E-4D7B-42A3-9F18-45BAD632749B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E88369E-4D7B-42A3-9F18-45BAD632749B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E88369E-4D7B-42A3-9F18-45BAD632749B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E88369E-4D7B-42A3-9F18-45BAD632749B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C54AAC04-3418-44D6-8C04-F796B832FA3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C54AAC04-3418-44D6-8C04-F796B832FA3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C54AAC04-3418-44D6-8C04-F796B832FA3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C54AAC04-3418-44D6-8C04-F796B832FA3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B371E5A-A24F-4207-AEF9-236EB86DD9DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B371E5A-A24F-4207-AEF9-236EB86DD9DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B371E5A-A24F-4207-AEF9-236EB86DD9DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B371E5A-A24F-4207-AEF9-236EB86DD9DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E16BF4A2-2906-4C35-A1E7-BEFA23ED6DFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E16BF4A2-2906-4C35-A1E7-BEFA23ED6DFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E16BF4A2-2906-4C35-A1E7-BEFA23ED6DFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E16BF4A2-2906-4C35-A1E7-BEFA23ED6DFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EF01365F-37BD-4F37-B836-271FB603D521} = {F8E1D187-5253-40FB-8888-88C38FD8EFA7}
+		{0E88369E-4D7B-42A3-9F18-45BAD632749B} = {F8E1D187-5253-40FB-8888-88C38FD8EFA7}
+		{FCB8D459-7C62-4D62-BE82-347D6932837F} = {F8E1D187-5253-40FB-8888-88C38FD8EFA7}
+		{E16BF4A2-2906-4C35-A1E7-BEFA23ED6DFF} = {FCB8D459-7C62-4D62-BE82-347D6932837F}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C11E57E0-79A0-4D66-98BE-00881FAE03C6}
-		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.WindowsAzure.Configuration.5.0.1118.2\lib\NET4;packages\EnterpriseLibrary.WindowsAzure.Configuration.5.0.1118.2\DesignTime
+		SolutionGuid = {4AF71F6F-597B-4940-BF25-D63C74044E7B}
 	EndGlobalSection
 EndGlobal

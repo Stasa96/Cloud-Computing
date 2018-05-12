@@ -16,7 +16,8 @@ namespace JobWorker
     {
         private readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         private readonly ManualResetEvent runCompleteEvent = new ManualResetEvent(false);
-        StudentServer ss = new StudentServer();
+
+        StudentJobServer.JobServer js = new  StudentJobServer.JobServer();
 
         public override void Run()
         {
@@ -39,11 +40,9 @@ namespace JobWorker
 
             // For information on handling configuration changes
             // see the MSDN topic at https://go.microsoft.com/fwlink/?LinkId=166357.
-            ss.Open();
+
             bool result = base.OnStart();
-
-            
-
+            js.Open();
             Trace.TraceInformation("JobWorker has been started");
 
             return result;
@@ -55,9 +54,9 @@ namespace JobWorker
 
             this.cancellationTokenSource.Cancel();
             this.runCompleteEvent.WaitOne();
-            ss.Close();
+            js.Close();
             base.OnStop();
-            
+
             Trace.TraceInformation("JobWorker has stopped");
         }
 
@@ -67,7 +66,7 @@ namespace JobWorker
             while (!cancellationToken.IsCancellationRequested)
             {
                 Trace.TraceInformation("Working");
-                await Task.Delay(1000);
+                await Task.Delay(3000);
             }
         }
     }
