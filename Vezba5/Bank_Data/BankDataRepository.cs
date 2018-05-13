@@ -47,10 +47,10 @@ namespace Bank_Data
             user3.Balance = 1300;
 
             User user4 = new User("004");
-            user2.Balance = 3000;
+            user4.Balance = 3000;
         
             User user5 = new User("005");
-            user3.Balance = 6300;
+            user5.Balance = 6300;
 
             batchOperation.InsertOrReplace(user1);
             batchOperation.InsertOrReplace(user2);

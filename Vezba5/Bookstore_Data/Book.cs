@@ -27,7 +27,7 @@ namespace Bookstore_Data
 
         public override string ToString()
         {
-            return $"ID: {RowKey}\tName: {name}\tPrice: {price}\tCount: {count}";
+            return $"ID: {RowKey}\nName: {name}\nPrice: {price}\nCount: {count}\n";
         }
     }
 }

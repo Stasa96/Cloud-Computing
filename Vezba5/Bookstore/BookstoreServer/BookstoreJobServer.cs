@@ -1,4 +1,5 @@
-﻿using Common;
+﻿using Bookstore_Data;
+using Common;
 using Microsoft.WindowsAzure.ServiceRuntime;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,7 @@ namespace Bookstore.BookstoreServer
             {
                 serviceHost.Open();
                 Trace.TraceInformation(String.Format("Host for {0} endpoint type opened successfully at {1} ", externalEndpointName, DateTime.Now));
+                BookstoreDataRepository initial = new BookstoreDataRepository();
             }
             catch (Exception e)
             {

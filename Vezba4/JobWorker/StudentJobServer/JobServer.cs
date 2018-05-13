@@ -33,6 +33,7 @@ namespace JobWorker.StudentJobServer
             {
                 serviceHost.Open();
                 Trace.TraceInformation(String.Format("Host for {0} endpoint type opened successfully at {1} {2}", externalEndpointName, DateTime.Now,endpoint));
+                StudentService_Data.StudentDataRepository r = new StudentService_Data.StudentDataRepository();
             }
             catch (Exception e)
             {
@@ -45,6 +46,7 @@ namespace JobWorker.StudentJobServer
             {
                 serviceHost.Close();
                 Trace.TraceInformation(String.Format("Host for {0} endpoint type closed successfully at {1}", externalEndpointName, DateTime.Now));
+                
             }
             catch (Exception e)
             {

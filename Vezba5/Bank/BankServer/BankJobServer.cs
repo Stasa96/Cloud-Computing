@@ -1,4 +1,5 @@
-﻿using Common;
+﻿using Bank_Data;
+using Common;
 using Microsoft.WindowsAzure.ServiceRuntime;
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,7 @@ namespace Bank.BankServer
             {
                 serviceHost.Open();
                 Trace.TraceInformation(String.Format("Host for {0} endpoint type opened successfully at {1} ", externalEndpointName, DateTime.Now));
+                BankDataRepository initial = new BankDataRepository();
             }
             catch (Exception e)
             {

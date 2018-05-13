@@ -13,7 +13,7 @@ namespace Client
     {
         static void Main(string[] args)
         {
-            ChannelFactory<IStudent> factory = new ChannelFactory<IStudent>(new NetTcpBinding(), new EndpointAddress("net.tcp://localhost:11000/InputRequest"));
+            ChannelFactory<IStudent> factory = new ChannelFactory<IStudent>(new NetTcpBinding(), new EndpointAddress("net.tcp://127.255.0.0:11000/InputRequest"));
 
             IStudent proxy = factory.CreateChannel();
 

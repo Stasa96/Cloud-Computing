@@ -15,9 +15,10 @@ namespace TransactionCoordinator.TransactionServer
         private ServiceHost serviceHost;
 
         private String externalEndpointName = "InputRequest";
+        RoleInstanceEndpoint inputEndPoint;
         public TransactionJobServer()
         {
-            RoleInstanceEndpoint inputEndPoint =
+            inputEndPoint =
            RoleEnvironment.CurrentRoleInstance.InstanceEndpoints[externalEndpointName];
             string endpoint = String.Format("net.tcp://{0}/{1}",
            inputEndPoint.IPEndpoint, externalEndpointName);
@@ -31,7 +32,7 @@ namespace TransactionCoordinator.TransactionServer
             try
             {
                 serviceHost.Open();
-                Trace.TraceInformation(String.Format("Host for {0} endpoint type opened successfully at {1} ", externalEndpointName, DateTime.Now));
+                Trace.TraceInformation(String.Format("Host for {0} endpoint type opened successfully at {1} {2}", externalEndpointName, DateTime.Now,inputEndPoint.IPEndpoint));
             }
             catch (Exception e)
             {

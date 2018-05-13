@@ -21,7 +21,7 @@ namespace Bank_Data
 
         public override string ToString()
         {
-            return $"ID: {RowKey}\tBalance: {balance}";
+            return $"ID: {RowKey}\nBalance: {balance}\n";
         }
 
         public double Balance { get => balance; set => balance = value; }

@@ -19,7 +19,6 @@ namespace Bookstore_Data
 
         public BookstoreDataRepository()
         {
-            Trace.WriteLine("USAOOOOOOOOOOOOOOOOOOOO1");
             _cloudStorageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("BookstoreDataConnectionString"));
             CloudTableClient tableClient = new CloudTableClient(new Uri(_cloudStorageAccount.TableEndpoint.AbsoluteUri), _cloudStorageAccount.Credentials);
 
