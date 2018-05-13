@@ -12,6 +12,7 @@
     <AssemblyName>StudentService</AssemblyName>
     <StartDevelopmentStorage>True</StartDevelopmentStorage>
     <Name>StudentService</Name>
+    <UseWebProjectPorts>False</UseWebProjectPorts>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
