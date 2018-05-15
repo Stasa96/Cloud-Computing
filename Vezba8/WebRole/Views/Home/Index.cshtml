@@ -1,0 +1,13 @@
+﻿@model AzureService_data.RequestCountInfoWCF
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Requests</h1>
+    <h2>Request send to instance->@Model.Instance</h2 >
+    <h2>Requests send until now to all instances->@Model.RequestCnt</h2>
+    
+    @Html.ActionLink("Update", "Index")
+</div>
