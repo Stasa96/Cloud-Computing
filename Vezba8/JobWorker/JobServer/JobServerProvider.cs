@@ -20,10 +20,10 @@ namespace AzureService_data
             repository.AddRequest(request);
 
             List<RequestCountInfo> requests = repository.GetAllRequest();
-
-            RequestCountInfoWCF r = new RequestCountInfoWCF(instanceId, requests[0].RequestCnt + requests[1].RequestCnt);
-
-            return r;
+            int cnt = 0;
+            requests.ForEach(x => { cnt += x.RequestCnt; });
+            
+            return new RequestCountInfoWCF(instanceId, cnt);
         }
     }
 }
