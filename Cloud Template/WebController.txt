@@ -1,0 +1,70 @@
+//WEB CONTROLLER
+//----------------------------------------------
+//PROMENITI->	Student		- naziv klase 
+//				RetrieveAll	- naziv metoda repository-a
+//				...
+			
+
+		//salje na view index.html listu studenata i vraca korisniku index.html sa izlistanim svim studenatima
+		public ActionResult Index()
+        {
+            return View(repo.RetrieveAll());
+        }
+		
+		//vraca Create.html korisniku
+		public ActionResult Create()
+        {
+            return View("Create");
+        }
+		
+		//vraca Create.html sa vec popunjenim svim poljima za edit studenta
+		public ActionResult Edit(string id)
+        {
+            Student s = repo.RetrieveAll().ToList().Find(st => st.RowKey.Equals(id));
+            return View("Create",s);
+        }
+
+		//pronalazi studenta po ID i brise ga iz repository-a, potom vraca Index.html korisniku
+        public ActionResult Delete(string id)
+        {
+            Student s = repo.RetrieveAll().ToList().Find(st => st.RowKey.Equals(id));
+
+            repo.Remove(s);
+
+            return View("Index", repo.RetrieveAll());
+        }
+		
+		//dodavanje studenta u tabelu sa slikom koja se nalazi u blobu, tabela ima referencu na sliku
+		//metode vezane za blob se nalaze u Blob Helper-u
+		[HttpPost]
+        public ActionResult AddEntity(String RowKey, String Name, String LastName,HttpPostedFileBase file )
+        {
+            try
+            {
+                // kreiranje blob sadrzaja i kreiranje blob klijenta
+                CloudBlockBlob blob =  CreateBlob(RowKey,file);
+
+                // postavljanje odabrane datoteke (slike) u blob servis koristeci blob klijent
+                blob.UploadFromStream(file.InputStream);
+
+                // upis studenta u table storage koristeci StudentDataRepository klasu
+                Student entry = new Student(RowKey)
+                {
+                    Name = Name,
+                    LastName = LastName,
+                    PhotoUrl = blob.Uri.ToString(),
+                    ThumbnailUrl = blob.Uri.ToString()
+                };
+                repo.AddOrReplaceStudent(entry);
+
+                //dodavanje u red indeks
+                AddToQueue(RowKey);
+
+                //Pozivamo akciju Index da se vratimo na index view sa novounetim studentom
+                return RedirectToAction("Index", repo.RetrieveAllStudents());
+            }
+            catch
+            {
+                return View("AddEntity");
+            }
+        }

@@ -1,0 +1,47 @@
+//BAZA I KREIRANJE TABLE
+//-------------------------------------------------------
+//PROMENITI-> 	DataConnectionString	- connection string
+//				StudentTable			- naziv tabele
+//				Student					- naziv klase
+
+
+	public class DataRepository
+    {
+        private CloudStorageAccount _storageAccount;
+        private CloudTable _table;
+        public StudentDataRepository()
+        {
+            _storageAccount =
+           CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
+            CloudTableClient tableClient = new CloudTableClient(new
+           Uri(_storageAccount.TableEndpoint.AbsoluteUri), _storageAccount.Credentials);
+            _table = tableClient.GetTableReference("StudentTable");
+            _table.CreateIfNotExists();
+        }
+
+        public void Remove(Student s)
+        {
+            TableOperation removeOperation = TableOperation.Delete(s);
+            _table.Execute(removeOperation);
+        }
+
+        public IQueryable<Student> RetrieveAll()
+        {
+            var results = from g in _table.CreateQuery<Student>()
+                          where g.PartitionKey == "Student"
+                          select g;
+            return results;
+        }
+        public void Add(Student s)
+        {
+                
+            TableOperation insertOperation = TableOperation.Insert(s);
+            _table.Execute(insertOperation);
+        }
+		
+		public void AddOrReplace(Student s)
+        {   
+            TableOperation insertOperation = TableOperation.InsertOrReplace(s);
+            _table.Execute(insertOperation);
+        }
+    }
