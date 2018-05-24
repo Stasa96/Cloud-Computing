@@ -13,12 +13,13 @@ namespace StudentsService_Data
     {
         public static CloudQueue GetQueueReference(String queueName)
         {
+            //Kreiranje Queue i vracanje reference na isti
             CloudStorageAccount storageAccount =
-           CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
+            CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
             CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
             CloudQueue queue = queueClient.GetQueueReference(queueName);
             queue.CreateIfNotExists();
             return queue;
         }
-    }
+    }
 }

@@ -55,15 +55,11 @@ namespace StudentService_WebRole.Controllers
             try
             {
                 // kreiranje blob sadrzaja i kreiranje blob klijenta
-                string uniqueBlobName = string.Format("image_{0}", RowKey);
-                var storageAccount =
-                CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
-                CloudBlobClient blobStorage = storageAccount.CreateCloudBlobClient();
-                CloudBlobContainer container = blobStorage.GetContainerReference("vezba");
-                CloudBlockBlob blob = container.GetBlockBlobReference(uniqueBlobName);
-                blob.Properties.ContentType = file.ContentType;
+                CloudBlockBlob blob =  CreateBlob(RowKey,file);
+
                 // postavljanje odabrane datoteke (slike) u blob servis koristeci blob klijent
                 blob.UploadFromStream(file.InputStream);
+
                 // upis studenta u table storage koristeci StudentDataRepository klasu
                 Student entry = new Student(RowKey)
                 {
@@ -74,16 +70,36 @@ namespace StudentService_WebRole.Controllers
                 };
                 repo.AddOrReplaceStudent(entry);
 
-                CloudQueue queue = QueueHelper.GetQueueReference("vezba");
-                queue.AddMessage(new CloudQueueMessage(RowKey));
+                //dodavanje u red indeks
+                AddToQueue(RowKey);
 
-
+                //Pozivamo akciju Index da se vratimo na index view sa novounetim studentom
                 return RedirectToAction("Index", repo.RetrieveAllStudents());
             }
             catch
             {
                 return View("AddEntity");
             }
+        }
+
+        private CloudBlockBlob CreateBlob(string RowKey, HttpPostedFileBase file)
+        {
+            string uniqueBlobName = string.Format("image_{0}", RowKey);
+            var storageAccount =
+            CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
+            CloudBlobClient blobStorage = storageAccount.CreateCloudBlobClient();
+            CloudBlobContainer container = blobStorage.GetContainerReference("vezba");
+            CloudBlockBlob blob = container.GetBlockBlobReference(uniqueBlobName);
+            blob.Properties.ContentType = file.ContentType;
+
+            return blob;
+        }
+
+        private void AddToQueue(string RowKey)
+        {
+            CloudQueue queue = QueueHelper.GetQueueReference("vezba");
+            CloudQueueMessage message = new CloudQueueMessage(RowKey);
+            queue.AddMessage(message);
         }
 
     }

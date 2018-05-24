@@ -37,12 +37,12 @@
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JobWorker\JobWorker.csproj">
-      <Name>JobWorker</Name>
-      <Project>{2b8dddc1-7b11-45ad-9d2c-5cf735281f58}</Project>
+    <ProjectReference Include="..\ImageConverter_WorkerRole\ImageConverter_WorkerRole.csproj">
+      <Name>ImageConverter_WorkerRole</Name>
+      <Project>{5e2913d7-f7c7-4f4f-8c89-342a97a7868e}</Project>
       <Private>True</Private>
       <RoleType>Worker</RoleType>
-      <RoleName>JobWorker</RoleName>
+      <RoleName>ImageConverter_WorkerRole</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
     <ProjectReference Include="..\StudentService_WebRole\StudentService_WebRole.csproj">
@@ -55,11 +55,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="JobWorkerContent\" />
+    <Folder Include="ImageConverter_WorkerRoleContent\" />
     <Folder Include="StudentService_WebRoleContent\" />
   </ItemGroup>
   <ItemGroup>
-    <DiagnosticsConfiguration Include="JobWorkerContent\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="ImageConverter_WorkerRoleContent\diagnostics.wadcfgx" />
     <DiagnosticsConfiguration Include="StudentService_WebRoleContent\diagnostics.wadcfgx" />
   </ItemGroup>
   <!-- Import the target files for this project template -->

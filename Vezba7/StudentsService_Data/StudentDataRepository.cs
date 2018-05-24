@@ -36,19 +36,19 @@ namespace StudentsService_Data
             _table.Execute(removeOperation);
         }
 
-        public void AddOrReplaceStudent(Student newStudent)
-        {
-            // Samostalni rad: izmestiti tableName u konfiguraciju servisa.
-            TableOperation insertOperation = TableOperation.InsertOrReplace(newStudent);
-            _table.Execute(insertOperation);
-        }
-
         public Student GetStudent(string s)
         {
             var results = from g in _table.CreateQuery<Student>()
                           where g.PartitionKey == "Student" && g.RowKey == s
                           select g;
-            return results.ToList()[0];
+            return results.ToArray()[0];
+        }
+
+        public void AddOrReplaceStudent(Student newStudent)
+        {
+            // Samostalni rad: izmestiti tableName u konfiguraciju servisa.
+            TableOperation insertOperation = TableOperation.InsertOrReplace(newStudent);
+            _table.Execute(insertOperation);
         }
     }
 
