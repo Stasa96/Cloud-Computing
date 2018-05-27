@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@using CloudService_Data;
+@using System.Diagnostics;
+<head>
+    <meta http-equiv="refresh" content="60" />
+</head>
+
+<h2>Evidence Home Page</h2>
+
+@{
+    try
+    {
+        BlobHelper blobHelper = new BlobHelper();
+        string status = blobHelper.DownloadFromBlob("servicehoststatus");
+        <p> System state-> @status</p>
+    }
+    catch
+    {
+        <p>System state-> Closed</p>
+    }
+}
+<form action="/Evidence/Simulation">
+    <label>Unos teksta</label>
+    <input type="text" name="input" />
+    <button type="submit">Simulacija</button>
+</form>
+
+@Html.ActionLink("Connect two brothers", "ConnectTwoBrothers");
+
+@{ if (ViewBag.Response != null)
+    {
+        <p>@ViewBag.Response</p>
+    }
+}
+
+@Html.ActionLink("Go to table", "Table");
+
+
+

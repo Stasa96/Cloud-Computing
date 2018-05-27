@@ -1,0 +1,27 @@
+﻿@model IOrderedEnumerable<CloudService_Data.EvidenceEntity>
+@{
+    ViewBag.Title = "Table";
+}
+
+<h2>Evidence Table</h2>
+
+<table border="1" cellspacing="10">
+    <tr>
+        <th>EvidenceNo</th>
+        <th>Evidence</th>
+        <th>StackTrace</th>
+        <th>Time</th>
+    </tr>
+    @foreach (CloudService_Data.EvidenceEntity e in Model)
+    {
+        <tr>
+            <td>@e.RowKey</td>
+            <td>@e.Evidence</td>
+            <td>@e.StackTrace</td>
+            <td>@e.Timestamp</td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink( "Back To Home page", "Index");
+
