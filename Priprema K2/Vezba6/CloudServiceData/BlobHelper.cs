@@ -3,6 +3,8 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -13,6 +15,12 @@ namespace CloudServiceData
 {
     public class BlobHelper
     {
+        CloudBlobClient blobStorage;
+
+        public BlobHelper()
+        {
+            InitBlobs();
+        }
         public void InitBlobs()
         {
             try
@@ -22,7 +30,7 @@ namespace CloudServiceData
                 CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
                 
                 // create blob container for images
-                CloudBlobClient blobStorage = storageAccount.CreateCloudBlobClient();
+                blobStorage = storageAccount.CreateCloudBlobClient();
                 CloudBlobContainer container = blobStorage.GetContainerReference("kontejnerk2");
                 container.CreateIfNotExists();
                 // configure container for public access
@@ -40,11 +48,10 @@ namespace CloudServiceData
             var storageAccount =
             CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
     
-            CloudBlobClient blobStorage = storageAccount.CreateCloudBlobClient();
+            blobStorage = storageAccount.CreateCloudBlobClient();
             CloudBlobContainer container = blobStorage.GetContainerReference("kontejnerk2");
             CloudBlockBlob blob = container.GetBlockBlobReference(uniqueBlobName);
             blob.Properties.ContentType = file.ContentType;
-
             return blob;
         }
 
@@ -53,6 +60,32 @@ namespace CloudServiceData
             blob.UploadFromStream(file.InputStream);
 
             return blob.Uri.ToString();
+        }
+
+        public Image DownloadImage(String containerName, String blobName)
+        {
+            CloudBlobContainer container =
+           blobStorage.GetContainerReference(containerName);
+            CloudBlockBlob blob = container.GetBlockBlobReference(blobName);
+            using (MemoryStream ms = new MemoryStream())
+            {
+                blob.DownloadToStream(ms);
+                return new Bitmap(ms);
+            }
+        }
+        public string UploadImage(Image image, String containerName, String blobName)
+        {
+            CloudBlobContainer container =
+           blobStorage.GetContainerReference(containerName);
+            CloudBlockBlob blob = container.GetBlockBlobReference(blobName);
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Bmp);
+                memoryStream.Position = 0;
+                blob.Properties.ContentType = "image/bmp";
+                blob.UploadFromStream(memoryStream);
+                return blob.Uri.ToString();
+            }
         }
     }
 }
