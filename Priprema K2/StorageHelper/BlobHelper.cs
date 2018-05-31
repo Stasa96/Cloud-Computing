@@ -127,11 +127,20 @@ namespace StorageHelper
             {
                 blob = container.GetBlockBlobReference(blobName);
                 blob.Properties.ContentType = file.ContentType;
+                blob.UploadFromStream(file.InputStream);
             }
             catch (Exception e)
             {
                 throw e;
             }
+        }
+
+        public string DownladPhotoURLFromBlob(string blobName)
+        {
+            CloudBlockBlob b = container.GetBlockBlobReference(blobName);
+
+            return b.Uri.ToString();
+
         }
         #endregion
     }

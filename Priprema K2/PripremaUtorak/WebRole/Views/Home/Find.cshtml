@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Find";
+}
+
+<h2>Find Film</h2>
+
+
+<br />  <br /><br />
+<form action="/Home/FindFilm">
+    <label>Vrsta proizvoda</label>
+    <input type="text" name="naziv" />
+    <button type="submit">Pronadji</button>
+</form>
+@Html.ActionLink("Nazad na Index", "Index");
+

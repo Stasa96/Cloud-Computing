@@ -7,21 +7,22 @@ using System.Threading.Tasks;
 
 namespace StorageHelper
 {
-    public class Proizvod :TableEntity
+    public class Film :TableEntity
     {
         string naziv;
-        int kolicina;
-
-        public Proizvod() { }
-        public Proizvod(string naziv, int kolini)
+        string photoURL;
+        int cnt = 0;
+        public Film() { }
+        public Film(string naziv, string photoUrl)
         {
-            PartitionKey = "Proizvod";
+            PartitionKey = "Film";
             RowKey = naziv;
             this.naziv = naziv;
-            this.kolicina = kolini;
+            this.photoURL = photoUrl;
         }
 
         public string Naziv { get => naziv; set => naziv = value; }
-        public int Kolicina { get => kolicina; set => kolicina = value; }
+        public string PhotoURL { get => photoURL; set => photoURL = value; }
+        public int Cnt { get => cnt; set => cnt = value; }
     }
 }
