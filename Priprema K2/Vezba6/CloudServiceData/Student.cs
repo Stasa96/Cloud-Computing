@@ -18,6 +18,7 @@ namespace CloudServiceData
             PartitionKey = "Student";
             RowKey = indexNo;
         }
-        public Student() { }
+        public Student() { }
+
     }
 }
