@@ -1,0 +1,19 @@
+﻿@Model List<String>
+    @{
+        ViewBag.Title = "Simulacija";
+    }
+
+    <h2>Simulacija</h2>
+
+    @{
+        foreach (string s in Model)
+        {
+            <h3>@s</h3>
+        }
+    }
+
+    <br /><br />
+    <div>
+        @Html.ActionLink("Back to Index", "Index")
+    </div>
+

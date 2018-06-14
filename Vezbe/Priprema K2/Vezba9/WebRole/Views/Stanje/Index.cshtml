@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<form action="/Stanje/AddToQueue">
+    <label>Izaberi stanje</label>
+    <select name="stanje">
+        <option value="otvori">Otvoreno</option>
+        <option value="zatvori">Zatvoreno</option>
+    </select>
+    <button type="submit">Simulacija</button>
+
+
+</form>
+<br /><br />
+<div>
+    <h5>@ViewBag.Stanje</h5>
+</div>
+<br /><br />
+      <div>
+          <h5>@ViewBag.Alive</h5>
+      </div>
+<div>
+    @Html.ActionLink("Simulacija bratke konekcije", "Check")
+</div>
